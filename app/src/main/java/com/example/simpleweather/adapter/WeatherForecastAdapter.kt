@@ -11,16 +11,16 @@ class WeatherForecastAdapter(): RecyclerView.Adapter<WeatherForecastAdapter.View
 
 
     val weather = mutableListOf<WeatherTest>(
-            WeatherTest("Monday", 22.0, 11.9),
-            WeatherTest("Tuesday", 23.6, 16.9),
-            WeatherTest("Wednesday", 22.0, 13.8),
-            WeatherTest("Thursday", 22.5, 15.5),
-            WeatherTest("Friday", 22.6, 17.3),
-            WeatherTest("Monday", 22.0, 11.9),
-            WeatherTest("Tuesday", 23.6, 16.9),
-            WeatherTest("Wednesday", 22.0, 13.8),
-            WeatherTest("Thursday", 22.5, 15.5),
-            WeatherTest("Friday", 22.6, 17.3)
+            WeatherTest("Monday", 22, 11),
+            WeatherTest("Tuesday", 23, 16),
+            WeatherTest("Wednesday", 22, 13),
+            WeatherTest("Thursday", 22, 15),
+            WeatherTest("Friday", 22, 17),
+            WeatherTest("Monday", 22, 11),
+            WeatherTest("Tuesday", 23, 16),
+            WeatherTest("Wednesday", 22, 13),
+            WeatherTest("Thursday", 22, 15),
+            WeatherTest("Friday", 22, 17)
     )
 
     class Viewholder(view: View): RecyclerView.ViewHolder(view){
@@ -55,6 +55,6 @@ class WeatherForecastAdapter(): RecyclerView.Adapter<WeatherForecastAdapter.View
 
 class WeatherTest(
         val date: String,
-        val highTemp: Double,
-        val lowTemp: Double,
+        val highTemp: Int,
+        val lowTemp: Int
 )

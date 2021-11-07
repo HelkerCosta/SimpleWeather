@@ -26,7 +26,7 @@
         android:id="@+id/main_hour_forecast_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#27446A"
+        android:background="@drawable/hour_forecast_background"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,8 +41,8 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline4"
         tools:listitem="@layout/row_weather_forecast" />
 
@@ -69,12 +69,12 @@
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/main_city_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="32sp"
         android:text="San Francisco"
-        android:textColor="@color/white"
+        android:textColor="#7C8292"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
@@ -82,23 +82,25 @@
         android:id="@+id/main_atm_pressure_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:backgroundTint="#171E30"
-        android:drawableLeft="@drawable/ic_sunny_icon"
+        android:drawableLeft="@drawable/ic_umbrela"
         android:text="0.011mbr"
         android:textAllCaps="false"
+        android:textColor="#3FFFDF"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/main_precipitation_btn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
 
     <Button
         android:id="@+id/main_precipitation_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#171E30"
-        android:drawableLeft="@drawable/ic_sunny_icon"
+        android:drawableLeft="@drawable/ic_water_drops"
         android:text="32%"
+        android:textColor="#3FFFDF"
         app:layout_constraintEnd_toStartOf="@+id/main_wind_speed_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/main_atm_pressure_btn"
@@ -109,8 +111,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#171E30"
-        android:drawableLeft="@drawable/ic_sunny_icon"
+        android:drawableLeft="@drawable/ic_wind"
         android:text="7km/h"
+        android:textColor="#3FFFDF"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -120,48 +123,43 @@
 
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/main_current_temp_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="102°"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="45sp"
+        android:textSize="56sp"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/main_city_name_tv" />
 
-    <Button
+    <TextView
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="#111822"
         android:text="Rainy"
-        android:backgroundTint="#3FFFDF"
+        android:textStyle="bold"
+        android:textColor="#111822"
+        android:textSize="12sp"
+        android:letterSpacing="0.5"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textAllCaps="true"
+        android:background="@drawable/blue_round_background"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/main_current_temp_tv" />
 
     <ImageView
         android:id="@+id/imageButton2"
         android:layout_width="139dp"
         android:layout_height="141dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_circle"
-        tools:srcCompat="@drawable/ic_circle" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="149dp"
-        android:layout_height="121dp"
         app:layout_constraintBottom_toBottomOf="@+id/button4"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_clouds" />
+        app:srcCompat="@drawable/test_tranparent_cloud"
+        tools:srcCompat="@drawable/test_tranparent_cloud" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

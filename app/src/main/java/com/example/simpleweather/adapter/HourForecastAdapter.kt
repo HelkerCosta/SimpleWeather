@@ -11,18 +11,18 @@ import com.example.simpleweather.R
 class HourForecastAdapter(): RecyclerView.Adapter<HourForecastAdapter.ViewHolder>(){
 
     val hourForecast = mutableListOf<HourForecastTest>(
-            HourForecastTest("Now", 11.9),
-            HourForecastTest("1pm", 20.2),
-            HourForecastTest("2pm", 30.0),
-            HourForecastTest("3pm", 33.4),
-            HourForecastTest("4pm", 17.5),
-            HourForecastTest("5pm", 12.0),
-            HourForecastTest("6pm", 15.1),
-            HourForecastTest("7pm", 15.1),
-            HourForecastTest("8pm", 15.1),
-            HourForecastTest("9pm", 15.1),
-            HourForecastTest("10pm", 15.1),
-            HourForecastTest("11pm", 15.1)
+            HourForecastTest("Now", 11),
+            HourForecastTest("1pm", 20),
+            HourForecastTest("2pm", 30),
+            HourForecastTest("3pm", 33),
+            HourForecastTest("4pm", 17),
+            HourForecastTest("5pm", 12),
+            HourForecastTest("6pm", 15),
+            HourForecastTest("7pm", 15),
+            HourForecastTest("8pm", 15),
+            HourForecastTest("9pm", 15),
+            HourForecastTest("10pm", 15),
+            HourForecastTest("11pm", 15)
     )
 
      class ViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -51,5 +51,5 @@ class HourForecastAdapter(): RecyclerView.Adapter<HourForecastAdapter.ViewHolder
 
 data class HourForecastTest(
         val time: String,
-        val temp: Double
+        val temp: Int
 )
