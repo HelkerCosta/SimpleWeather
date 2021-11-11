@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
@@ -72,53 +72,65 @@
         android:id="@+id/main_city_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="San Francisco"
+        android:textSize="26sp"
+        android:text="West Palm Beach, FL"
         android:textColor="#7C8292"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
-    <Button
-        android:id="@+id/main_atm_pressure_btn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/main_atm_pressure_tv"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#171E30"
-        android:drawableLeft="@drawable/ic_umbrela"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/text_view_background"
+        android:gravity="center"
         android:text="0.011mbr"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#3FFFDF"
+        android:textSize="12sp"
+        app:drawableStartCompat="@drawable/ic_umbrella"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/main_precipitation_btn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/main_precipitation_tv"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
 
-    <Button
-        android:id="@+id/main_precipitation_btn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/main_precipitation_tv"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#171E30"
-        android:drawableLeft="@drawable/ic_water_drops"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/text_view_background"
+        android:gravity="center"
         android:text="32%"
+        android:textAlignment="center"
         android:textColor="#3FFFDF"
-        app:layout_constraintEnd_toStartOf="@+id/main_wind_speed_btn"
+        android:textSize="12sp"
+        app:drawableStartCompat="@drawable/ic_water_drops"
+        app:layout_constraintBottom_toBottomOf="@+id/main_atm_pressure_tv"
+        app:layout_constraintEnd_toStartOf="@+id/main_wind_speed_tv"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/main_atm_pressure_btn"
-        app:layout_constraintTop_toTopOf="@+id/main_atm_pressure_btn" />
+        app:layout_constraintStart_toEndOf="@+id/main_atm_pressure_tv"
+        app:layout_constraintTop_toTopOf="@+id/main_atm_pressure_tv" />
 
-    <Button
-        android:id="@+id/main_wind_speed_btn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/main_wind_speed_tv"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#171E30"
-        android:drawableLeft="@drawable/ic_wind"
+        android:background="@drawable/text_view_background"
         android:text="7km/h"
-        android:textColor="#3FFFDF"
+        android:gravity="center"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/main_precipitation_btn"
-        app:layout_constraintTop_toTopOf="@+id/main_precipitation_btn" />
+        android:textColor="#3FFFDF"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:padding="9dp"
+        app:drawableStartCompat="@drawable/ic_wind"
+        app:layout_constraintBottom_toBottomOf="@+id/main_precipitation_tv"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toEndOf="@+id/main_precipitation_tv"
+        app:layout_constraintTop_toTopOf="@+id/main_precipitation_tv" />
 
 
 

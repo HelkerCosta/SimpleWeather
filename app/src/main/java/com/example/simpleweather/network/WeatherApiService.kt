@@ -12,6 +12,7 @@ interface WeatherApiService
         suspend fun getWeather(
                 @Query("lat") lat: Double,
                 @Query("lon") lon: Double,
+                @Query("units") units: String =  "imperial",
                 @Query("appid") appId: String
         ): Response<WeatherResponse>
 }

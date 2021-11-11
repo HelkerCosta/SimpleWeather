@@ -78,4 +78,7 @@ dependencies {
     def dynamicanimation_version = "1.0.0"
     implementation("androidx.dynamicanimation:dynamicanimation:$dynamicanimation_version")
 
+    def playservice_version = "18.0.0"
+    implementation "com.google.android.gms:play-services-location:$playservice_version"
+
 }

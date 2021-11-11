@@ -1,29 +1,22 @@
 package com.example.simpleweather.adapter
 
+import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simpleweather.R
+import com.example.simpleweather.network.response.Hourly
+import java.math.RoundingMode
+import java.time.Instant
+import java.util.*
 
 
 class HourForecastAdapter(): RecyclerView.Adapter<HourForecastAdapter.ViewHolder>(){
-
-    val hourForecast = mutableListOf<HourForecastTest>(
-            HourForecastTest("Now", 11),
-            HourForecastTest("1pm", 20),
-            HourForecastTest("2pm", 30),
-            HourForecastTest("3pm", 33),
-            HourForecastTest("4pm", 17),
-            HourForecastTest("5pm", 12),
-            HourForecastTest("6pm", 15),
-            HourForecastTest("7pm", 15),
-            HourForecastTest("8pm", 15),
-            HourForecastTest("9pm", 15),
-            HourForecastTest("10pm", 15),
-            HourForecastTest("11pm", 15)
-    )
 
      class ViewHolder(view: View): RecyclerView.ViewHolder(view){
 
@@ -41,15 +34,30 @@ class HourForecastAdapter(): RecyclerView.Adapter<HourForecastAdapter.ViewHolder
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.time.text = hourForecast[position].time
-        holder.temp.text = hourForecast[position].temp.toString() + "°"
+    private val differCallBack = object : DiffUtil.ItemCallback<Hourly>(){
+        override fun areItemsTheSame(oldItem: Hourly, newItem: Hourly): Boolean = oldItem == newItem
+
+        override fun areContentsTheSame(oldItem: Hourly, newItem: Hourly): Boolean = oldItem == newItem
     }
 
-    override fun getItemCount(): Int = hourForecast.size
-}
+    private val differ = AsyncListDiffer(this,differCallBack)
 
-data class HourForecastTest(
-        val time: String,
-        val temp: Int
-)
+    @SuppressLint("SetTextI18n")
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        val date = Calendar.getInstance()
+        date.timeInMillis = differ.currentList[position].dt * 1000
+
+        date.get(Calendar.HOUR)
+
+        holder.time.text = date.get(Calendar.HOUR_OF_DAY).toString()
+        holder.temp.text = differ.currentList[position].temp.toBigDecimal().setScale(0,RoundingMode.UP).toString()
+    }
+
+    fun setData(list: List<Hourly>){
+        differ.submitList(list)
+    }
+
+    override fun getItemCount(): Int = differ.currentList.size
+
+}
