@@ -11,38 +11,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:text="Now"
         android:textColor="@color/white"
         android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/row_hour_forecast_temp_tv"
-        app:layout_constraintEnd_toEndOf="@+id/row_hour_forecast_temp_tv"
-        app:layout_constraintStart_toStartOf="@+id/row_hour_forecast_temp_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/row_hour_forecast_temp_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:text="23°"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        tools:textColor="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/row_hour_forecast_time_tv" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/row_hour_weather_icon_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/row_hour_forecast_temp_tv"
-        app:layout_constraintStart_toStartOf="@+id/row_hour_forecast_temp_tv"
-        app:layout_constraintTop_toBottomOf="@+id/row_hour_forecast_temp_tv"
-        app:srcCompat="@drawable/ic_clound_1" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_sunny" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,6 +60,22 @@ class MainFragment: Fragment(R.layout.fragment_main) {
             layoutManager = LinearLayoutManager(context)
         }
 
+        mainFragmentViewModel.currentWeatherDescription.observe(viewLifecycleOwner){
+            _binding.mainCurrentWeatherDescription.text = it
+        }
+
+        mainFragmentViewModel.currentTemperature.observe(viewLifecycleOwner){
+            _binding.mainCurrentTempTv.text = it.toString()
+        }
+
+        mainFragmentViewModel.currentPopPrecipitation.observe(viewLifecycleOwner){
+            _binding.mainPrecipitationTv.text = it
+        }
+
+        mainFragmentViewModel.currentWindSpeed.observe(viewLifecycleOwner){
+            _binding.mainWindSpeedTv.text = it
+        }
+
         _binding.mainCityNameTv.text = getString(R.string.city_name_with_state, mainFragmentViewModel.cityName, mainFragmentViewModel.stateName)
     }
 

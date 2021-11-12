@@ -10,8 +10,10 @@ import com.example.simpleweather.util.convert
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.math.RoundingMode
 import javax.inject.Inject
 import javax.inject.Scope
+import kotlin.math.roundToInt
 
 @HiltViewModel
 class MainFragmentViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
@@ -22,6 +24,23 @@ class MainFragmentViewModel @Inject constructor(private val repository: Reposito
     private var lon: Double = 0.0
     var stateName: String = ""
     var cityName: String = ""
+   // var currentTemperature: Double = 0.0
+
+    val currentWeatherDescription: MutableLiveData<String> by lazy{
+        MutableLiveData<String>()
+    }
+
+    val currentTemperature: MutableLiveData<String> by lazy{
+        MutableLiveData<String>()
+    }
+
+    val currentPopPrecipitation: MutableLiveData<String> by lazy{
+        MutableLiveData<String>()
+    }
+
+    val currentWindSpeed: MutableLiveData<String> by lazy{
+        MutableLiveData<String>()
+    }
 
 
     init {
@@ -32,6 +51,15 @@ class MainFragmentViewModel @Inject constructor(private val repository: Reposito
     private fun getWeather(){
         viewModelScope.launch {
             _weatherResponse.value = repository.getWeather(lat, lon)
+
+            if(_weatherResponse.value!!.isSuccessful){
+                currentWeatherDescription.value = _weatherResponse.value!!.body()?.current!!.weather[0].main
+                currentTemperature.value = _weatherResponse.value!!.body()?.current!!.temp.roundToInt().toString()
+                currentPopPrecipitation.value = if(_weatherResponse.value!!.body()!!.hourly[0].pop > 0.3) "${(_weatherResponse.value!!.body()!!.hourly[0].pop * 100).roundToInt()}%" else "0%"
+                currentWindSpeed.value = "${_weatherResponse.value!!.body()!!.hourly[0].wind_speed.roundToInt()} m/h"
+            }
+
+
         }
     }
 
