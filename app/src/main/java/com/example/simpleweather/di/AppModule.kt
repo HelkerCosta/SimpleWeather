@@ -3,8 +3,9 @@ package com.example.simpleweather.di
 import android.content.Context
 import android.location.Geocoder
 import android.location.LocationManager
-import com.example.simpleweather.network.WeatherApiService
-import com.example.simpleweather.repository.Repository
+import com.example.simpleweather.data.remote.WeatherServiceApi
+import com.example.simpleweather.data.repository.WeatherServiceRepositoryImpl
+import com.example.simpleweather.util.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,16 +17,16 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class AppModule {
+object AppModule {
 
     @Singleton
     @Provides
-    fun provideWeatherAPI(): WeatherApiService {
+    fun provideWeatherAPI(): WeatherServiceApi {
         return Retrofit.Builder()
-                .baseUrl("https://api.openweathermap.org/data/2.5/")
+                .baseUrl(Constant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(WeatherApiService::class.java)
+                .create(WeatherServiceApi::class.java)
     }
 
     @Singleton
@@ -43,11 +44,11 @@ class AppModule {
     @Singleton
     @Provides
     fun provideRepo(
-            api: WeatherApiService,
+            api: WeatherServiceApi,
             locationManger: LocationManager,
             geoCoder: Geocoder
-    ): Repository {
-        return Repository(api, locationManger, geoCoder) as Repository
+    ): WeatherServiceRepositoryImpl {
+        return WeatherServiceRepositoryImpl(api, locationManger, geoCoder) as WeatherServiceRepositoryImpl
     }
 
 }

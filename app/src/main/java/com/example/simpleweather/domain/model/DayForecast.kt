@@ -1,13 +1,12 @@
-package com.example.simpleweather.domain
+package com.example.simpleweather.domain.model
 
 data class DayForecast(
-        val cityName: String,
-        val countryName: String,
         val sunRise: Double,
         val sunSet: Double,
         val tempMax: Double,
         val tempMin: Double,
-        val feelLike: Double
+        val feelLike: Double,
+        val icon: String
 )
 
 /*

@@ -1,11 +1,9 @@
-package com.example.simpleweather.domain
+package com.example.simpleweather.domain.model
 
 data class HourForecast(
         val time: Long,
         val temp: Double,
-        val feelsLike: Double,
-        val windSpeed: Double,
-        val windDegree: Double
+        val icon: String,
 )
 
 /*

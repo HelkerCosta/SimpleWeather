@@ -1,7 +1,6 @@
 package com.example.simpleweather.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simpleweather.R
-import com.example.simpleweather.network.response.Hourly
+import com.example.simpleweather.data.remote.dto.Hourly
 import com.example.simpleweather.util.convertHour
 import java.math.RoundingMode
 import java.util.*

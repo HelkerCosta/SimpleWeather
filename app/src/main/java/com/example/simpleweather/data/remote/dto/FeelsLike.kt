@@ -1,4 +1,4 @@
-package com.example.simpleweather.network.response
+package com.example.simpleweather.data.remote.dto
 
 data class FeelsLike(
     val day: Double,

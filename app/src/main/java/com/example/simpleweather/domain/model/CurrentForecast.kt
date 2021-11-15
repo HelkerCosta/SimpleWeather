@@ -1,15 +1,20 @@
-package com.example.simpleweather.domain
+package com.example.simpleweather.domain.model
+
+import com.example.simpleweather.data.remote.dto.Hourly
 
 data class CurrentForecast(
-        val cityName: String,
         val time: Long,
         val sunRise: Long,
         val sunSet: Long,
         val temp: Double,
         val feelsLike: Double,
         val windSpeed: Double,
-        val windDeg: Double
+        val windDeg: Int,
+        val icon: String,
+        val description: String,
+        val hourly: List<Hourly>
 )
+
 
 /*
 "current":{

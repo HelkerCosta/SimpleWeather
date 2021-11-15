@@ -1,12 +1,11 @@
-package com.example.simpleweather.network
+package com.example.simpleweather.data.remote
 
-import com.example.simpleweather.network.response.WeatherResponse
-import retrofit2.Response
+import com.example.simpleweather.data.remote.dto.WeatherResponseDto
+import com.example.simpleweather.util.Resource
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface WeatherApiService
+interface WeatherServiceApi
 {
         @GET("onecall")
         suspend fun getWeather(
@@ -14,7 +13,7 @@ interface WeatherApiService
                 @Query("lon") lon: Double,
                 @Query("units") units: String =  "imperial",
                 @Query("appid") appId: String
-        ): Response<WeatherResponse>
+        ): WeatherResponseDto
 }
 
 
