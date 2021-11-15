@@ -1,18 +1,20 @@
 package com.example.simpleweather.domain.model
 
 import com.example.simpleweather.data.remote.dto.Hourly
+import com.example.simpleweather.data.remote.dto.Rain
 
 data class CurrentForecast(
-        val time: Long,
-        val sunRise: Long,
-        val sunSet: Long,
-        val temp: Double,
-        val feelsLike: Double,
-        val windSpeed: Double,
-        val windDeg: Int,
-        val icon: String,
-        val description: String,
-        val hourly: List<Hourly>
+        val time: Long = -1,
+        val sunRise: Long = -1,
+        val sunSet: Long = -1,
+        val temp: Int = -1,
+        val feelsLike: Int = -1,
+        val windSpeed: Int = -1,
+        val windDeg: Int = -1,
+        val icon: String = "",
+        val description: String = "",
+        val propabilityRain: Int = 0,
+        val hourly: List<Hourly> = emptyList()
 )
 
 

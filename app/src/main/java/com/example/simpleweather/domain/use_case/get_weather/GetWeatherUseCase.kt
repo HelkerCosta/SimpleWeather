@@ -16,13 +16,13 @@ class GetWeatherUseCase @Inject constructor(
 
     operator fun invoke(lat: Double, lon: Double): Flow<Resource<CurrentForecast>> = flow {
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<CurrentForecast>())
             val weather = repository.getCurrentWeather(lat, lon).toCurrentForecast()
             emit(Resource.Success(weather))
         } catch (e: HttpException){
-            //emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
+            emit(Resource.Error<CurrentForecast>(e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException){
-            //emit(Resource.Error(e.localizedMessage?: "No internet connection"))
+            emit(Resource.Error<CurrentForecast>(e.localizedMessage?: "No internet connection"))
         }
     }
 }

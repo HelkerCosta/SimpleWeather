@@ -4,24 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simpleweather.R
 
 class WeatherForecastAdapter(): RecyclerView.Adapter<WeatherForecastAdapter.Viewholder>() {
 
-
-    val weather = mutableListOf<WeatherTest>(
-            WeatherTest("Monday", 22, 11),
-            WeatherTest("Tuesday", 23, 16),
-            WeatherTest("Wednesday", 22, 13),
-            WeatherTest("Thursday", 22, 15),
-            WeatherTest("Friday", 22, 17),
-            WeatherTest("Monday", 22, 11),
-            WeatherTest("Tuesday", 23, 16),
-            WeatherTest("Wednesday", 22, 13),
-            WeatherTest("Thursday", 22, 15),
-            WeatherTest("Friday", 22, 17)
-    )
 
     class Viewholder(view: View): RecyclerView.ViewHolder(view){
         val date: TextView
@@ -43,18 +31,13 @@ class WeatherForecastAdapter(): RecyclerView.Adapter<WeatherForecastAdapter.View
         return Viewholder(view)
     }
 
+    //private val differ = object : DiffUtil.ItemCallback<>
+
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
-        holder.date.text = weather[position].date
-        holder.highTemp.text = weather[position].highTemp.toString() + "°"
-        holder.lowTemp.text = weather[position].lowTemp.toString() + "°"
+
     }
 
-    override fun getItemCount(): Int = weather.size
+    override fun getItemCount(): Int = 0
 
 }
 
-class WeatherTest(
-        val date: String,
-        val highTemp: Int,
-        val lowTemp: Int
-)

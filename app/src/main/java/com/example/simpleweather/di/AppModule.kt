@@ -5,7 +5,9 @@ import android.location.Geocoder
 import android.location.LocationManager
 import com.example.simpleweather.data.remote.WeatherServiceApi
 import com.example.simpleweather.data.repository.WeatherServiceRepositoryImpl
+import com.example.simpleweather.domain.repository.WeatherServiceRepository
 import com.example.simpleweather.util.Constant
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +19,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object  AppModule {
 
     @Singleton
     @Provides
@@ -47,8 +49,9 @@ object AppModule {
             api: WeatherServiceApi,
             locationManger: LocationManager,
             geoCoder: Geocoder
-    ): WeatherServiceRepositoryImpl {
+    ): WeatherServiceRepository {
         return WeatherServiceRepositoryImpl(api, locationManger, geoCoder) as WeatherServiceRepositoryImpl
     }
+
 
 }

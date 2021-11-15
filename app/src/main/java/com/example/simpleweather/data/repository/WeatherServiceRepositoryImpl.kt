@@ -12,14 +12,17 @@ import com.example.simpleweather.domain.model.ForecastAddress
 import com.example.simpleweather.domain.repository.WeatherServiceRepository
 import javax.inject.Inject
 
+
 class WeatherServiceRepositoryImpl @Inject constructor(
         private val weatherApi: WeatherServiceApi,
         private val locationManager: LocationManager,
-        private val geoCoder: Geocoder) : WeatherServiceRepository {
+        private val geoCoder: Geocoder
+        ) : WeatherServiceRepository
+{
 
 
     override suspend fun getCurrentWeather(lat: Double, lon: Double): WeatherResponseDto {
-        return weatherApi.getWeather(lat, lon, "imperial", BuildConfig.OW_KEY);
+        return weatherApi.getWeather(lat, lon, "imperial", BuildConfig.WEATHER_API_KEY);
     }
 
     @SuppressLint("MissingPermission")
@@ -38,6 +41,6 @@ class WeatherServiceRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getWeatherFavorites(): CurrentForecast {
-        TODO("Not yet implemented")
+        return CurrentForecast()
     }
 }
