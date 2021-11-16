@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.simpleweather.R
 import com.example.simpleweather.adapter.HourForecastAdapter
 import com.example.simpleweather.adapter.WeatherForecastAdapter
+import com.example.simpleweather.data.remote.dto.Daily
 import com.example.simpleweather.data.remote.dto.Hourly
 import com.example.simpleweather.databinding.FragmentMainBinding
+import com.example.simpleweather.domain.model.DayForecast
 import com.example.simpleweather.util.Resource
 import kotlinx.coroutines.flow.collectLatest
 
@@ -50,6 +52,7 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                         _binding.mainPrecipitationTv.text = getString(R.string.probability_of_rain, it.currentForecast.propabilityRain)
                         _binding.mainWindSpeedTv.text = getString(R.string.wind_speed, it.currentForecast.windSpeed)
                         setHourRecyclerViewWithData(it.currentForecast.hourly)
+                        setWeatherRecyclerViewWithData(it.currentForecast.day)
                     }
                 }
 
@@ -67,7 +70,12 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         }
     }
 
-    private fun setWeatherRecyclerViewWithData(){
+    private fun setWeatherRecyclerViewWithData(list: List<Daily>){
+        weatherForecastAdapter.setData(list)
 
+        _binding.mainWeatherForecastRv.apply {
+            adapter = weatherForecastAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 }

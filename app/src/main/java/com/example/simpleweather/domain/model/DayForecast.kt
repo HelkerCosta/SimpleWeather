@@ -1,12 +1,10 @@
 package com.example.simpleweather.domain.model
 
 data class DayForecast(
-        val sunRise: Double,
-        val sunSet: Double,
-        val tempMax: Double,
-        val tempMin: Double,
-        val feelLike: Double,
-        val icon: String
+        val date: Long = -1,
+        val tempMax: Double = 0.0,
+        val tempMin: Double = 0.0,
+        val icon: String = ""
 )
 
 /*

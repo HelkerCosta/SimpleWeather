@@ -1,9 +1,11 @@
 package com.example.simpleweather.data.remote.dto
 
+import com.example.simpleweather.domain.model.DayForecast
+
 data class Daily(
         val clouds: Int,
         val dew_point: Double,
-        val dt: Int,
+        val dt: Long,
         val feels_like: FeelsLike,
         val humidity: Int,
         val moon_phase: Double,
@@ -16,8 +18,9 @@ data class Daily(
         val sunset: Int,
         val temp: Temp,
         val uvi: Double,
-        val weather: List<WeatherX>,
+        val weatherx: List<WeatherX>,
         val wind_deg: Int,
         val wind_gust: Double,
         val wind_speed: Double
 )
+

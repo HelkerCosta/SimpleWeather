@@ -1,6 +1,7 @@
 package com.example.simpleweather.data.remote.dto
 
 import com.example.simpleweather.domain.model.CurrentForecast
+import com.example.simpleweather.domain.model.DayForecast
 import kotlin.math.roundToInt
 
 data class WeatherResponseDto(
@@ -26,9 +27,14 @@ fun WeatherResponseDto.toCurrentForecast(): CurrentForecast{
             icon = current.weather[0].icon,
             description = current.weather[0].description,
             hourly = hourly,
-            propabilityRain = hourly[0].pop.roundToInt()
+            propabilityRain = hourly[0].pop.roundToInt(),
+            day = daily
     )
 }
+
+
+
+
 
 /*
 data class CurrentForecast(
