@@ -70,7 +70,7 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         }
     }
 
-    private fun setWeatherRecyclerViewWithData(list: List<Daily>){
+    private fun setWeatherRecyclerViewWithData(list: List<DayForecast>){
         weatherForecastAdapter.setData(list)
 
         _binding.mainWeatherForecastRv.apply {

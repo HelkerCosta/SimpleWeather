@@ -2,6 +2,7 @@ package com.example.simpleweather.util
 
 
 fun convert(state: String): String {
+
     val statesHashMap = HashMap<String, String>()
     statesHashMap["Alabama"] = "AL"
     statesHashMap["Alaska"] = "AK"

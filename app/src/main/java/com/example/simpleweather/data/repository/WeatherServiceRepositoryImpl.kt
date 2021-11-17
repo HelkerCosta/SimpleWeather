@@ -22,7 +22,7 @@ class WeatherServiceRepositoryImpl @Inject constructor(
 
 
     override suspend fun getCurrentWeather(lat: Double, lon: Double): WeatherResponseDto {
-        return weatherApi.getWeather(lat, lon, "imperial", BuildConfig.WEATHER_API_KEY);
+        return weatherApi.getWeather(lat, lon, "imperial", BuildConfig.OW_KEY);
     }
 
     @SuppressLint("MissingPermission")

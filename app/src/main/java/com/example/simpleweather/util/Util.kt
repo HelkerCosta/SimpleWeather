@@ -2,7 +2,6 @@ package com.example.simpleweather.util
 
 import android.util.Log
 import com.example.simpleweather.R
-import java.math.RoundingMode
 import java.util.*
 
 fun convertHour(hour: Int, pm: Int): String{
@@ -19,12 +18,19 @@ fun convertHour(hour: Int, pm: Int): String{
     return "${hour}am"
 }
 
-fun getDate(dt: Long): String{
-
+fun getMonthDay(dt: Long): Int{
     val date = Calendar.getInstance()
     date.timeInMillis = dt * 1000
 
-    return date.get(Calendar.DATE).toString()
+    return date.get(Calendar.DAY_OF_MONTH)
+}
+
+
+fun getWeekDay(dt: Long): Int{
+    val date = Calendar.getInstance()
+    date.timeInMillis = dt * 1000
+
+    return date.get(Calendar.DAY_OF_WEEK)
 }
 
 fun getTimeAmPm(dt: Long): String{
@@ -61,5 +67,23 @@ fun getWeatherIcon(icon: String): Int{
 
         else -> (R.drawable.ic_launcher_background)
     }
+}
+
+fun getDateFormat(day: Int, weekDay: Int): String{
+
+    if(weekDay > 7 || weekDay < 0 || day < 1 || day > 31){
+        return ""
+    }
+
+     val week = hashMapOf<Int, String>()
+    week[7] = "Sun"
+    week[1] = "Mon"
+    week[2] = "Tue"
+    week[3] = "Wed"
+    week[4] = "Thu"
+    week[5] = "Fri"
+    week[6] = "Sat"
+
+    return "${day} ${week[weekDay]}"
 }
 

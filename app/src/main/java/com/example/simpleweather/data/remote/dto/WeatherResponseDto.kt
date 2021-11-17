@@ -1,5 +1,6 @@
 package com.example.simpleweather.data.remote.dto
 
+import androidx.lifecycle.Transformations.map
 import com.example.simpleweather.domain.model.CurrentForecast
 import com.example.simpleweather.domain.model.DayForecast
 import kotlin.math.roundToInt
@@ -28,7 +29,14 @@ fun WeatherResponseDto.toCurrentForecast(): CurrentForecast{
             description = current.weather[0].description,
             hourly = hourly,
             propabilityRain = hourly[0].pop.roundToInt(),
-            day = daily
+            day = daily.map {
+                DayForecast(
+                        date = it.dt,
+                        tempMax = it.temp.max,
+                        tempMin = it.temp.min,
+                        icon = it.weather[0].icon
+                )
+            }
     )
 }
 

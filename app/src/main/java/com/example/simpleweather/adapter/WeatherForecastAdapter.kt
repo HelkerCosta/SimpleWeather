@@ -9,10 +9,9 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simpleweather.R
-import com.example.simpleweather.data.remote.dto.Daily
 import com.example.simpleweather.domain.model.DayForecast
-import com.example.simpleweather.util.getDate
-import com.example.simpleweather.util.getWeatherIcon
+import com.example.simpleweather.util.*
+import kotlin.math.roundToInt
 
 class WeatherForecastAdapter(): RecyclerView.Adapter<WeatherForecastAdapter.Viewholder>() {
 
@@ -32,10 +31,10 @@ class WeatherForecastAdapter(): RecyclerView.Adapter<WeatherForecastAdapter.View
 
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<Daily>(){
-        override fun areItemsTheSame(oldItem: Daily, newItem: Daily): Boolean = oldItem == newItem
+    private val differCallback = object : DiffUtil.ItemCallback<DayForecast>(){
+        override fun areItemsTheSame(oldItem: DayForecast, newItem: DayForecast): Boolean = oldItem == newItem
 
-        override fun areContentsTheSame(oldItem: Daily, newItem: Daily): Boolean = oldItem == newItem
+        override fun areContentsTheSame(oldItem: DayForecast, newItem: DayForecast): Boolean = oldItem == newItem
     }
 
     private val differ = AsyncListDiffer(this, differCallback)
@@ -50,17 +49,20 @@ class WeatherForecastAdapter(): RecyclerView.Adapter<WeatherForecastAdapter.View
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
 
-        holder.date.text = getDate(differ.currentList[position].dt)
-        //holder.iconImg.setImageResource(getWeatherIcon(differ.currentList[position].weatherx[0].icon))
-        holder.highTemp.text = differ.currentList[position].temp.max.toString()
-        holder.lowTemp.text = differ.currentList[position].temp.min.toString()
+        val dayForecast = differ.currentList[position]
+
+        val resource = holder.itemView.resources
+
+        holder.date.text = getDateFormat(getMonthDay(dayForecast.date), getWeekDay(dayForecast.date))
+        holder.iconImg.setImageResource(getWeatherIcon(dayForecast.icon))
+        holder.highTemp.text = resource.getString(R.string.temperature, dayForecast.tempMax.roundToInt())
+        holder.lowTemp.text = resource.getString(R.string.temperature, dayForecast.tempMin.roundToInt())
     }
 
-    fun setData(list: List<Daily>){
+    fun setData(list: List<DayForecast>){
         differ.submitList(list)
     }
 
     override fun getItemCount(): Int = differ.currentList.size
-
 }
 

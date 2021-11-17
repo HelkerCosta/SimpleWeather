@@ -16,7 +16,7 @@ data class CurrentForecast(
         val description: String = "",
         val propabilityRain: Int = 0,
         val hourly: List<Hourly> = emptyList(),
-        val day: List<Daily> = emptyList()
+        val day: List<DayForecast> = emptyList()
 
 )
 

@@ -54,6 +54,6 @@ class HourForecastAdapter(): RecyclerView.Adapter<HourForecastAdapter.ViewHolder
         differ.submitList(list)
     }
 
-    override fun getItemCount(): Int = differ.currentList.size
+    override fun getItemCount(): Int = 25
 
 }
